@@ -1,0 +1,17 @@
+local players = game:GetService("Players")
+local lplr = players.LocalPlayer
+local antivoidtransparent = {["Value"] = 0}
+local antivoidcolor = {["Hue"] = 0, ["Sat"] = 0, ["Value"] = 0}
+local specialpos = (workspace.MapCFrames:FindFirstChild("center") and workspace.MapCFrames.center.Value.p == Vector3.new(77, 11, 35))
+local antivoidpart = Instance.new("Part", Workspace)
+antivoidpart.Name = "AntiVoidV2"
+antivoidpart.Size = Vector3.new(2100, 0.5, 2000)
+antivoidpart.Position = Vector3.new(160.5, 25, 247.5)
+antivoidpart.Transparency = 0
+antivoidpart.Color = Color3.new(0,0,0)
+antivoidpart.Anchored = true
+antivoidpart.Touched:connect(function(touchedvoid)
+    if touchedvoid.Parent:FindFirstChild("Humanoid") and touchedvoid.Parent.Name == lplr.Name then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity.X,120,game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity.Z)
+    end
+end)
